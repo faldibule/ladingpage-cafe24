@@ -1,6 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 axios.jsx
-
+API.jsx
 # Created by https://www.toptal.com/developers/gitignore/api/macos,windows,react
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,windows,react
 

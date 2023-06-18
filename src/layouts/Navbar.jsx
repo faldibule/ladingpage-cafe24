@@ -15,16 +15,18 @@ import {
   Typography,
 } from '@mui/material';
 import Logo from '../components/Logo';
+import { useNavigate } from 'react-router-dom';
 
 const menu = [
   { id: 'home', title: 'Home' },
-  { id: 'feature', title: 'Fitur' },
-  { id: 'faq', title: 'FAQ' },
+  { id: 'feature', title: 'About' },
+  { id: 'faq', title: 'Promo' },
+  { id: 'article', title: 'Article' },
 ];
 
-export default function Navbar() {
+export default function Navbar(props) {
   const [scrollPosition, setScrollPosition] = useState(0);
-
+  const navigate = useNavigate()
   const handleScroll = () => {
     const position = window.scrollY;
     setScrollPosition(position);
@@ -39,9 +41,14 @@ export default function Navbar() {
 
   const [drawer, setDrawer] = useState(false);
   const handleDrawer = (e, id) => {
+    console.log(id)
     if (id !== undefined && id !== 'backdropClick') {
       setTimeout(() => {
-        document.getElementById(id).scrollIntoView({ behavior: 'smooth' }, true);
+        if(id === 'article'){
+          navigate('/article')
+        }else{
+          document.getElementById(id).scrollIntoView({ behavior: 'smooth' }, true);
+        }
       }, 100);
     }
     setDrawer(!drawer);
@@ -50,49 +57,71 @@ export default function Navbar() {
   return (
     <AppBar
       position="fixed"
-      color={scrollPosition > 10 ? 'inherit' : 'transparent'}
-      sx={{ transition: '0.2s', boxShadow: scrollPosition < 10 && 'none' }}
+      color={!!props.type ? 'transparent' : scrollPosition > 10 ? 'inherit' : 'transparent'}
+      sx={{ 
+        transition: '0.2s', 
+        boxShadow: scrollPosition < 10 && 'none',
+        background: !!props.type ? 'linear-gradient(to right, #43cea2, #185a9d)' : null,
+      }}
     >
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" py={2}>
           <Stack direction="row" alignItems="center" spacing={1}>
             <IconButton onClick={handleDrawer}>
               <MenuRounded
-                sx={{ display: { xs: 'flex', md: 'none' }, color: scrollPosition < 10 ? '#fff' : 'inherit' }}
+                sx={{ display: { xs: 'flex', md: 'none' }, color: !!props.type ? 'inherit' : scrollPosition < 10 ? '#fff' : 'inherit' }}
               />
             </IconButton>
             <Drawer anchor="top" open={drawer} onClose={handleDrawer}>
               <Box sx={{ width: 'auto' }} role="presentation">
                 <List>
-                  {menu.map((value, index) => (
+                  {menu.map((value, index) => {
+                    if(!!props.type){
+                      return ;
+                    }
+                    return(
                     <ListItem key={index} disablePadding>
                       <ListItemButton onClick={(e) => handleDrawer(e, value.id)}>
                         <ListItemText primary={value.title} />
                       </ListItemButton>
                     </ListItem>
-                  ))}
+                    )
+                  })}
                 </List>
               </Box>
             </Drawer>
-            <Logo white={!(scrollPosition > 10)} />
+            <Logo white={!!props.type ? true : !(scrollPosition > 10)} />
           </Stack>
           <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' } }}>
-            {menu.map((value, index) => (
-              <Typography
-                key={index}
-                variant="body2"
-                fontWeight="bold"
-                component={Button}
-                color={scrollPosition > 10 ? 'inherit' : 'white'}
-                onClick={() => document.getElementById(value.id).scrollIntoView({ behavior: 'smooth' }, true)}
-              >
-                {value.title}
-              </Typography>
-            ))}
+            {menu.map((value, index) => {
+              if(!!props.type){
+                return ;
+              }
+              return (
+                <Typography
+                  key={index}
+                  variant="body2"
+                  fontWeight="bold"
+                  component={Button}
+                  color={!!props.type ? 'white' : scrollPosition > 10 ? 'inherit' : 'white'}
+                  onClick={() => { 
+                    if(value.id == 'article'){
+                      navigate('/article')
+                    }else if(document.getElementById(value.id) === null){
+                      navigate('/')
+                    }else{
+                      document.getElementById(value.id).scrollIntoView({ behavior: 'smooth' }, true)
+                    }
+                  }}
+                >
+                  {value.title}
+                </Typography>
+              )
+            })}
           </Stack>
           <Button
             variant="contained"
-            color={scrollPosition > 10 ? 'primary' : 'inherit'}
+            color={!!props.type ? 'inherit' : scrollPosition > 10 ? 'primary' : 'inherit'}
             onClick={() => document.getElementById('download').scrollIntoView({ behavior: 'smooth' }, true)}
           >
             Download

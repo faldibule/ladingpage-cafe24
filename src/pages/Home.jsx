@@ -4,8 +4,45 @@ import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
 import CustomCard from '../components/CustomCard';
 import CustomAccordion from '../components/CustomAccordion';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { API } from '../variable/API';
 
 export default function Home() {
+  const [promoBanner, setPromoBanner] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [empty, setEmpty] = useState(false)
+  const getDataPromoBanner = () => {
+    axios.get(`${API}promotion/fetch`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        },
+        params: {
+            status: 'all',
+            paginate: 0,
+        }
+    })
+    .then(res => {
+        setPromoBanner(res.data.data.data)
+        // if(res.data.data.length === 0){
+        //     setEmpty(true)
+        // }else{
+        //     setEmpty(false)
+        //     setPromoBanner([...res.data.data])
+        // }
+        // setLoading(false)
+    })
+    .catch(err => {
+    })
+  }
+  
+  useEffect(() => {
+    let mounted = true
+    if(mounted){
+      getDataPromoBanner()
+    }
+    return () => mounted = false
+  }, [])
   return (
     <Page title="Food Delivery .Within Building. Group Chat.">
       <Navbar />
@@ -52,33 +89,24 @@ export default function Home() {
       </Stack>
       <Container sx={{ pt: 12 }} id="feature">
         <Typography variant="h3" align="center" gutterBottom>
-          Memudahkan Warga Perkantoran
+          Promo Terbaru
         </Typography>
         <Typography color="text.secondary" align="center">
-          Berikut beberapa kemudahan yang bisa kamu dapatkan:
+          Berikut beberapa promo yang sedang berlangsung :
         </Typography>
         <Grid container spacing={3} mt={0}>
-          <Grid item xs={12} md={4}>
-            <CustomCard
-              src="/static/illustrations/delivery.svg"
-              title="Kirim ke Mejamu"
-              description="Kamu hanya duduk manis, kurir kami akan mengirim pesanan langsung ke mejamu dengan cepat."
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <CustomCard
-              src="/static/illustrations/order.svg"
-              title="Jual/Beli Sekaligus"
-              description="Kamu dapat menjual dan membeli makanan atau minuman dengan pengguna lainnya dalam satu langkah."
-            />
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <CustomCard
-              src="/static/illustrations/feed.svg"
-              title="Group Chat"
-              description="Kamu dapat berkomunikasi dengan penjual atau pembeli lainnya dalam satu ruang percakapan yang terpusat."
-            />
-          </Grid>
+          {promoBanner?.map((val, i) => {
+            return (
+              <Grid item xs={12} md={6} key={val.id}>
+                <CustomCard
+                  src={val.image_url}
+                  title={val.name}
+                  description={val.description}
+                  width={1000}
+                />
+              </Grid>
+            )
+          })}
         </Grid>
       </Container>
       <Container sx={{ pt: 12 }}>
