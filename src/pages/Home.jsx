@@ -34,7 +34,7 @@ export default function Home() {
     return () => mounted = false
   }, [])
   return (
-    <Page title="Food Delivery .Within Building. Group Chat.">
+    <Page title="Cafe24">
       <Navbar />
       <Stack
         id="home"
