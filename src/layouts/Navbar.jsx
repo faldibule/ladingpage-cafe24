@@ -19,8 +19,8 @@ import { useNavigate } from 'react-router-dom';
 
 const menu = [
   { id: 'home', title: 'Home' },
-  { id: 'feature', title: 'About' },
-  { id: 'faq', title: 'Promo' },
+  { id: 'feature', title: 'Promo' },
+  { id: 'about', title: 'About' },
   { id: 'article', title: 'Article' },
 ];
 
@@ -90,7 +90,8 @@ export default function Navbar(props) {
                 </List>
               </Box>
             </Drawer>
-            <Logo white={!!props.type ? true : !(scrollPosition > 10)} />
+            {/* <Logo white={!!props.type ? true : !(scrollPosition > 10)} /> */}
+            <Typography>Logo</Typography>
           </Stack>
           <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' } }}>
             {menu.map((value, index) => {

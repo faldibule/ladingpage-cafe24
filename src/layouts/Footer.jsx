@@ -9,13 +9,14 @@ export default function Footer() {
       <Container>
         <Grid container spacing={{ xs: 5, md: 3 }} pb={5}>
           <Grid item xs={12} md={3}>
-            <Logo white />
+            {/* <Logo white /> */}
+            <Typography>Logo</Typography>
             <Typography variant="body2" mt={2.2}>
-              Food Delivery.
+              Lorem, ipsum dolor.
               <br />
-              Within Building.
+              Lorem, ipsum dolor.
               <br />
-              Group Chat.
+              Lorem ipsum dolor sit.
             </Typography>
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
@@ -24,10 +25,13 @@ export default function Footer() {
                 Home
               </Link>
               <Link component={RouterLink} to="" color="inherit" underline="none">
-                Fitur
+                Promo
               </Link>
               <Link component={RouterLink} to="" color="inherit" underline="none">
-                FAQ
+                About
+              </Link>
+              <Link component={RouterLink} to="/article" color="inherit" underline="none">
+                Article
               </Link>
               <Link component={RouterLink} to="" color="inherit" underline="none">
                 Download

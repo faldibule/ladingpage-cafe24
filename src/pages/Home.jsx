@@ -14,9 +14,6 @@ export default function Home() {
   const [empty, setEmpty] = useState(false)
   const getDataPromoBanner = () => {
     axios.get(`${API}promotion/fetch`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('authToken')}`
-        },
         params: {
             status: 'all',
             paginate: 0,
@@ -24,13 +21,6 @@ export default function Home() {
     })
     .then(res => {
         setPromoBanner(res.data.data.data)
-        // if(res.data.data.length === 0){
-        //     setEmpty(true)
-        // }else{
-        //     setEmpty(false)
-        //     setPromoBanner([...res.data.data])
-        // }
-        // setLoading(false)
     })
     .catch(err => {
     })
@@ -58,9 +48,9 @@ export default function Home() {
         <Container>
           <Grid container alignItems="center" justifyContent="center" pt={15} pb={10}>
             <Grid item xs={12} md={6} textAlign={{ xs: 'center', md: 'left' }} order={{ xs: 2, md: 1 }}>
-              <Typography variant="h2">Food Delivery.</Typography>
-              <Typography variant="h2">Within Building.*</Typography>
-              <Typography variant="h2">Group Chat.</Typography>
+              <Typography variant="h2">Lorem, ipsum dolor.</Typography>
+              <Typography variant="h2">Lorem, ipsum.</Typography>
+              <Typography variant="h2">Lorem, ipsum dolor.</Typography>
               <Stack direction="row" justifyContent={{ xs: 'center', md: 'left' }} spacing={2} mt={5}>
                 <Link
                   href="https://play.google.com/store/apps/details?id=com.gojek.app&hl=id"
@@ -74,7 +64,7 @@ export default function Home() {
                 </Link> */}
               </Stack>
               <Typography variant="body2" mt={5}>
-                * Baru melayani gedung The Tower - by Alam Sutera, Jakarta.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum laudantium possimus, totam ipsum quisquam suscipit.
               </Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
@@ -109,17 +99,14 @@ export default function Home() {
           })}
         </Grid>
       </Container>
-      <Container sx={{ pt: 12 }}>
+      <Container sx={{ pt: 12 }} id="about">
         <Grid container alignItems="center" spacing={3} mb={3}>
           <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Typography variant="h3" gutterBottom>
-              Order 1 Klik
+              Lorem, ipsum dolor.
             </Typography>
             <Typography color="text.secondary">
-              Fitur ini memungkinkan pengguna untuk memesan makanan dari restoran atau penjual makanan yang terdaftar
-              dalam aplikasi. Pengguna dapat menjelajahi menu, memilih makanan yang diinginkan, menambahkannya ke
-              keranjang belanja, dan memproses pembayaran melalui aplikasi. Setelah itu, pesanan akan dikirim ke
-              restoran atau penjual makanan untuk diproses dan diantar ke lokasi pengguna.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam delectus ipsam, minima iusto suscipit repellat cum nulla magni possimus quo odio? Fugit voluptatum, ex quae in temporibus corrupti quam quaerat repellendus ipsum, id eveniet quisquam sint blanditiis ipsa officia quasi est qui voluptatem? Eveniet sit libero impedit dicta corporis. Voluptates?
             </Typography>
           </Grid>
           <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
@@ -132,26 +119,20 @@ export default function Home() {
           </Grid>
           <Grid item xs={12} md={6}>
             <Typography variant="h3" gutterBottom>
-              Bayar Masih Manual
+              Lorem, ipsum dolor.
             </Typography>
             <Typography color="text.secondary">
-              Fitur ini memungkinkan pemilik restoran atau penjual makanan untuk memasarkan dan menjual produk makanan
-              mereka melalui aplikasi. Mereka dapat membuat profil bisnis, mengunggah menu makanan, mengatur harga,
-              mengelola persediaan, dan menerima pesanan dari pelanggan. Fitur ini memberikan platform bagi pemilik
-              bisnis makanan untuk memperluas jangkauan mereka dan meningkatkan penjualan.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam dolores assumenda at quisquam repellat repellendus quas alias dolorum ex, culpa ipsam in iusto. Commodi quas odio nobis architecto facilis dolorum, in quaerat dignissimos libero fugit reiciendis, atque, doloremque ratione! Omnis at ea, impedit debitis qui ad dolore aspernatur ipsa porro.
             </Typography>
           </Grid>
         </Grid>
         <Grid container alignItems="center" spacing={3} mb={3}>
           <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Typography variant="h3" gutterBottom>
-              Group Chat per Topik
+              Lorem ipsum dolor sit amet.
             </Typography>
             <Typography color="text.secondary">
-              Fitur ini memungkinkan pengguna untuk berpartisipasi dalam percakapan yang terfokus pada topik tertentu
-              yang berkaitan dengan makanan. Misalnya, topik seperti "Resep dan Masakan Rumahan," "Restoran Terbaik di
-              Kota," atau "Makanan Sehat dan Gizi." Pengguna dapat bergabung dengan talks yang menarik bagi mereka,
-              mengajukan pertanyaan, memberikan saran, atau berbagi pengetahuan mereka.
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic sunt illo ducimus! Officiis maiores dolor porro aliquid assumenda similique consectetur repudiandae, qui velit? Voluptatum explicabo ex hic qui consequatur dicta a sed? Veniam a quis dignissimos? A laborum illum ullam fugit facilis, rerum numquam aliquid dolor veritatis soluta, maxime ex.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
@@ -159,9 +140,9 @@ export default function Home() {
           </Grid>
         </Grid>
       </Container>
-      <Container sx={{ pt: 12 }} id="faq">
+      {/* <Container sx={{ pt: 12 }} id="faq">
         <CustomAccordion />
-      </Container>
+      </Container> */}
       <Container sx={{ pt: 12 }} id="download">
         <Card
           sx={{
@@ -172,7 +153,7 @@ export default function Home() {
         >
           <CardContent sx={{ px: { xs: 1, md: 2 } }}>
             <Typography variant="h3" textAlign={{ xs: 'center', md: 'left' }}>
-              Download aplikasi CeploX sekarang!
+              Download aplikasi Cafe24 sekarang!
             </Typography>
             <Stack direction="row" justifyContent={{ xs: 'center', md: 'left' }} spacing={{ xs: 1, md: 2 }} mt={2}>
               <Link

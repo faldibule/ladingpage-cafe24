@@ -51,7 +51,7 @@ export default function CustomAccordion() {
       </Typography>
       <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
-          <Typography>CeploX itu aplikasi apa sih?</Typography>
+          <Typography>Cafe24 itu aplikasi apa sih?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -63,7 +63,7 @@ export default function CustomAccordion() {
       </Accordion>
       <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
         <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
-          <Typography>Apa keuntungan bergabung dengan CeploX?</Typography>
+          <Typography>Apa keuntungan bergabung dengan Cafe24?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
@@ -75,7 +75,7 @@ export default function CustomAccordion() {
       </Accordion>
       <Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
         <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
-          <Typography>Bagaimana cara menjadi Partner CeploX?</Typography>
+          <Typography>Bagaimana cara menjadi Partner Cafe24?</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <Typography>

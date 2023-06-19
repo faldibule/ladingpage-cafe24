@@ -6,21 +6,11 @@ export default function PrivacyPolicy() {
       style={{ fontFamily: 'sans-serif', textAlign: 'justify', lineHeight: '1.5', marginBottom: '50px', padding: 20 }}
     >
       <h4>Privacy Policy</h4>
-      PT. Daro Lab Indonesia built the CeploX app as a Free app. This SERVICE is provided by PT. Daro Lab Indonesia at
-      no cost and is intended for use as is. This page is used to inform visitors regarding our policies with the
-      collection, use, and disclosure of Personal Information if anyone decided to use our Service. If you choose to use
-      our Service, then you agree to the collection and use of information in relation to this policy. The Personal
-      Information that we collect is used for providing and improving the Service. We will not use or share your
-      information with anyone except as described in this Privacy Policy. The terms used in this Privacy Policy have the
-      same meanings as in our Terms and Conditions, which is accessible at CeploX unless otherwise defined in this
-      Privacy Policy.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam nemo, beatae, ratione inventore deleniti quis porro, nam ex cupiditate est facere deserunt voluptatum consequuntur natus pariatur dicta. Eligendi recusandae et dignissimos quasi incidunt cum reprehenderit id, explicabo consectetur laudantium consequuntur architecto accusantium sunt perspiciatis distinctio tenetur reiciendis, quam voluptatum dolores adipisci. Explicabo ullam modi odio sequi eveniet veritatis! In voluptate distinctio deleniti eos omnis itaque nulla similique sapiente laudantium aspernatur at voluptatibus, voluptatum saepe? Dignissimos eius deserunt neque corporis, tenetur magni ut velit porro exercitationem tempore, aperiam possimus modi quisquam doloremque optio quam illo excepturi magnam error dicta! Nobis molestiae nesciunt iure doloremque voluptatum illum repellendus maxime, maiores cumque quis nisi, fugit excepturi inventore similique deleniti. Quasi reiciendis dolor itaque iusto autem debitis voluptatibus facere nobis dicta totam hic ipsum amet suscipit dignissimos ullam, sit odio? Repellat officiis odit fugiat explicabo, quidem amet vel porro vitae dolor exercitationem animi ab vero excepturi quis neque nisi cum enim magnam facilis quaerat. Perferendis, vero dolores illo explicabo doloremque at dolore dignissimos qui suscipit! Dicta aut placeat dolores, totam sed, aliquam ex eveniet nam incidunt illum quod tempora quam quaerat quasi quos natus nulla, maiores eius id! Neque repellendus animi quibusdam porro veniam?
       <br />
       <br />
       <h4>Information Collection and Use</h4>
-      For a better experience, while using our Service, we may require you to provide us with certain personally
-      identifiable information, including but not limited to PT. Daro Lab Indonesia. The information that we request
-      will be retained by us and used as described in this privacy policy. The app does use third party services that
-      may collect information used to identify you.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate ex corrupti at, quas dicta debitis ipsum, repudiandae, ratione cum a id natus non iure voluptatum voluptates exercitationem vero. Ipsa similique ullam magnam amet nam tenetur pariatur explicabo ipsam aspernatur, minima quasi voluptatibus eum veniam perferendis totam quos libero in quis!
       <br />
       <br />
       Link to privacy policy of third party service providers used by the app
@@ -86,9 +76,7 @@ export default function PrivacyPolicy() {
       This policy is effective as of 2023-06-10
       <br />
       <br />
-      <h4>Contact Us</h4> If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact
-      us at H. R. Rasuna Said Street 3-4, RW.7, Kuningan, Karet Kuningan, Kecamatan Setiabudi, Kota Jakarta Selatan, DKI
-      Jakarta, 12940 - (021) 52992777.
+      <h4>Contact Us</h4> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo, temporibus. Facere similique esse tempora amet odit? Illo, eveniet? Deserunt aut temporibus eveniet, officiis recusandae quisquam, accusantium distinctio reprehenderit odit totam cupiditate aspernatur dignissimos fugiat quia consequuntur earum itaque blanditiis omnis voluptates excepturi accusamus saepe deleniti dolorem. Ipsam voluptatum excepturi incidunt.
     </div>
   );
 }
