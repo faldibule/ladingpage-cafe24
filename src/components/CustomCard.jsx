@@ -6,7 +6,7 @@ const CustomCard = (props) => {
     <Card sx={{ height: '100%' }}>
       <CardContent>
         <Stack 
-          direction={{ xs: 'row', md: 'column' }} 
+          direction={{ xs: 'column', md: 'column' }} 
           alignItems={{ xs: 'center', md: 'flex-start' }} 
           spacing={2}
         >
