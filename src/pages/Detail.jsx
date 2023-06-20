@@ -5,7 +5,9 @@ import { API } from '../variable/API';
 import { useParams } from 'react-router-dom';
 import Page from '../components/Page';
 import Navbar from '../layouts/Navbar';
-import { CircularProgress, Container, Grid, Stack } from '@mui/material';
+import { CircularProgress, Container, Grid, Stack, Typography } from '@mui/material';
+import Footer from '../layouts/Footer';
+import { ArrowBack } from '@mui/icons-material';
 
 const Detail = () => {
   const { slug } = useParams();
@@ -19,7 +21,7 @@ const Detail = () => {
         setData(res.data.data);
       })
       .catch((xhr) => {
-        console.log(xhr.response);
+        // console.log(xhr.response);
       })
       .finally(() => {
         setLoading(false)
@@ -35,19 +37,20 @@ const Detail = () => {
     <Page title="Detail">
         <Navbar type="article" />
         <Container sx={{ py: 12 }} id="Article">
-        {!loading ? 
-            <ArticleDetailComponent data={data} />
-            :
-            <Grid container>
-                <Grid item xs={12} md={12}>
-                    <Stack direction='row' justifyContent='center'>
-                        <CircularProgress />
-                    </Stack>
-                </Grid>
+          {!loading ? 
+              <ArticleDetailComponent data={data} />
+              :
+              <Grid container>
+                  <Grid item xs={12} md={12}>
+                      <Stack direction='row' justifyContent='center'>
+                          <CircularProgress />
+                      </Stack>
+                  </Grid>
 
-            </Grid>
-        }
+              </Grid>
+          }
         </Container>
+        <Footer />
     </Page>
   )
 };

@@ -87,12 +87,13 @@ export default function Home() {
         <Grid container spacing={3} mt={0}>
           {promoBanner?.map((val, i) => {
             return (
-              <Grid item xs={12} md={6} key={val.id}>
+              <Grid item xs={12} md={4} key={val.id}>
                 <CustomCard
                   src={val.image_url}
                   title={val.name}
                   description={val.description}
                   width={1000}
+                  type="not_custom"
                 />
               </Grid>
             )

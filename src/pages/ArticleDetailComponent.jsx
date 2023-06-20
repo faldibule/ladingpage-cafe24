@@ -1,6 +1,27 @@
 import React from "react";
-import { Container, Typography, Box, Grid, CircularProgress } from "@mui/material";
+import { Container, Typography, Box, Grid, CircularProgress, Breadcrumbs, Link } from "@mui/material";
 import { DateFormat, TimeFormat, YoutubeParser } from "../components/Format";
+const fontSize = { 
+   xs: '0.7rem', 
+   md:  '0.9rem', 
+}
+const CustomBreadcrumbs = ({ data }) => {
+   return (
+      <Breadcrumbs separator='>' aria-label="breadcrumb" sx={{ my: 2, fontSize }}>
+         <Link underline="hover" color="inherit" href="/">
+            Home
+         </Link>
+         <Link
+            underline="hover"
+            color="inherit"
+            href="/article"
+         >
+            Article
+         </Link>
+         <Typography fontSize='inherit' color="text.primary">{data.title}</Typography>
+      </Breadcrumbs>
+   )
+}
 
 export default function ArticleDetailComponent({ data }) {
    return (
@@ -12,14 +33,15 @@ export default function ArticleDetailComponent({ data }) {
                <Grid item sm={1} md={2} />
                <Grid item xs sm={10} md={8}>
                   <Box sx={{ mt: 3, mb: 2 }}>
+                     <CustomBreadcrumbs data={data} />
                      <Typography variant="h5" fontWeight="bold" mb={1}>
                         {data.title}
                      </Typography>
-                     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <Typography variant="body2" color="text.secondary">
+                     <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize }}>
+                        <Typography variant="body2" color="text.secondary" fontSize='inherit'>
                            {DateFormat(data.created_at, "day")} | {TimeFormat(data.created_at)}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" fontSize='inherit'>
                            Artikel
                         </Typography>
                      </Box>
@@ -38,14 +60,15 @@ export default function ArticleDetailComponent({ data }) {
                 <Grid item sm={1} md={2} />
                 <Grid item xs sm={10} md={8}>
                 <Box sx={{ mt: 3, mb: 2 }}>
+                    <CustomBreadcrumbs data={data} />
                     <Typography variant="h5" fontWeight="bold" mb={1}>
                         {data.title}
                     </Typography>
-                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                        <Typography variant="body2" color="text.secondary">
+                    <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", fontSize }}>
+                        <Typography variant="body2" color="text.secondary" fontSize='inherit'>
                             {DateFormat(data.created_at, "day")} | {TimeFormat(data.created_at)}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" fontSize='inherit'>
                             Tutorial
                         </Typography>
                     </Box>

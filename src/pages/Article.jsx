@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CircularProgress, Container, Grid, Link, Stack, Typography } from '@mui/material';
+import { Box, Breadcrumbs, Button, Card, CardContent, CircularProgress, Container, Grid, Link, Stack, Typography } from '@mui/material';
 import Page from '../components/Page';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
@@ -80,14 +80,12 @@ export default function Article() {
     <Page title="Food Delivery .Within Building. Group Chat.">
       <Navbar type="article" />
       <Container sx={{ py: 12 }} id="Article">
-        <Stack direction='row' sx={{ cursor: 'pointer' }} onClick={() => navigate('/')} >
-            <Typography component='span'>
-                <ArrowBack />
-            </Typography>
-            <Typography color="text.secondary">
-                Kembali
-            </Typography>
-        </Stack>
+        <Breadcrumbs separator='>' aria-label="breadcrumb" sx={{ my: 2, fontSize: { xs: '0.7rem', md:  '0.9rem', } }}>
+          <Link underline="hover" color="inherit" href="/">
+              Home
+          </Link>
+          <Typography fontSize='inherit' color="text.primary">Article</Typography>
+        </Breadcrumbs>
         <Typography variant="h3" gutterBottom>
           Daftar Artikel
         </Typography>

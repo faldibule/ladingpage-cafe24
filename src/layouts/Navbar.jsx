@@ -41,7 +41,6 @@ export default function Navbar(props) {
 
   const [drawer, setDrawer] = useState(false);
   const handleDrawer = (e, id) => {
-    console.log(id)
     if (id !== undefined && id !== 'backdropClick') {
       setTimeout(() => {
         if(id === 'article'){
@@ -76,9 +75,7 @@ export default function Navbar(props) {
               <Box sx={{ width: 'auto' }} role="presentation">
                 <List>
                   {menu.map((value, index) => {
-                    if(!!props.type){
-                      return ;
-                    }
+                    
                     return(
                     <ListItem key={index} disablePadding>
                       <ListItemButton onClick={(e) => handleDrawer(e, value.id)}>
