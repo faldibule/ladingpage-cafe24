@@ -30,8 +30,8 @@ export default function Footer() {
       <Container>
         <Grid container spacing={{ xs: 5, md: 3 }} pb={5}>
           <Grid item xs={12} md={3}>
-            {/* <Logo white /> */}
-            <Typography>Logo</Typography>
+            <Logo white={false} />
+            {/* <Typography>Logo</Typography> */}
             <Typography variant="body2" color="text.secondary" mt={1}>
                 +62 {setting?.phone}
               </Typography>
@@ -102,9 +102,17 @@ export default function Footer() {
           </Grid>
           <Grid item xs={6} sm={4} md={3}>
             <Stack spacing={1}>
-              <Link component={RouterLink} to="privacy-policy" color="inherit" underline="none">
-                Kebijakan Privasi
+              <Typography>
+                Marketplace
+              </Typography>
+              <Link component={RouterLink} to="https://tokopedia.link/7lmJEwP6Aob" target='_blank' color="inherit" underline="none">
+                <img src="/static/tokopedia-icon.svg" width="30" />
               </Link>
+              <Tooltip title="Instagram">
+                <IconButton>
+                </IconButton>
+              </Tooltip>
+
               {/* <Tooltip title="Instagram">
                 <IconButton>
                   <Instagram />

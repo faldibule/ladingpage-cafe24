@@ -87,8 +87,8 @@ export default function Navbar(props) {
                 </List>
               </Box>
             </Drawer>
-            {/* <Logo white={!!props.type ? true : !(scrollPosition > 10)} /> */}
-            <Typography>Logo</Typography>
+            <Logo white={!!props.type ? true : !(scrollPosition > 10)} />
+            {/* <Typography>Logo</Typography> */}
           </Stack>
           <Stack direction="row" spacing={1} sx={{ display: { xs: 'none', md: 'flex' } }}>
             {menu.map((value, index) => {

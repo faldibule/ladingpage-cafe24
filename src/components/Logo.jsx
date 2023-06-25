@@ -23,7 +23,7 @@ export default function Logo({ disabledLink = false, white, sx }) {
 
   // OR
   const logo = (
-    <Box component="img" src={white ? '/static/logo-cta.png' : '/static/logo.png'} sx={{ width: 100, ...sx }} />
+    <Box component="img" src={white ? '/static/logo-white.png' : '/static/logo1.png'} sx={{ width: 50, ...sx }} />
   );
 
   //   const logo = (

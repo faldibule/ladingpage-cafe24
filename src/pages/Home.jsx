@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Container, Grid, Link, Stack, Typography } from '@mui/material';
+import { Box, Card, CardContent, CircularProgress, Container, Grid, Link, List, ListItem, Stack, Typography } from '@mui/material';
 import Page from '../components/Page';
 import Navbar from '../layouts/Navbar';
 import Footer from '../layouts/Footer';
@@ -7,10 +7,12 @@ import CustomAccordion from '../components/CustomAccordion';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { API } from '../variable/API';
+import Carousel from 'react-material-ui-carousel';
 
 export default function Home() {
   const [promoBanner, setPromoBanner] = useState([])
-  const [loading, setLoading] = useState(false)
+  const [hightlight, setHightlight] = useState([])
+  const [loading, setLoading] = useState(true)
   const [empty, setEmpty] = useState(false)
   const getDataPromoBanner = () => {
     axios.get(`${API}promotion/fetch`, {
@@ -25,14 +27,28 @@ export default function Home() {
     .catch(err => {
     })
   }
+  const getDataHightlightProduct = () => {
+    axios.get(`${API}product_slider/fetch`)
+    .then(res => {
+      setHightlight(res.data.data)
+    })
+    .catch(err => {
+    })
+  }
   
   useEffect(() => {
     let mounted = true
     if(mounted){
-      getDataPromoBanner()
+      Promise.all([getDataHightlightProduct(), getDataPromoBanner()]).then(res => {
+        setLoading(false)
+      })
     }
     return () => mounted = false
   }, [])
+
+  if(loading){
+    return <CircularProgress />
+  }
   return (
     <Page title="Cafe24">
       <Navbar />
@@ -48,9 +64,10 @@ export default function Home() {
         <Container>
           <Grid container alignItems="center" justifyContent="center" pt={15} pb={10}>
             <Grid item xs={12} md={6} textAlign={{ xs: 'center', md: 'left' }} order={{ xs: 2, md: 1 }}>
-              <Typography variant="h2">Lorem, ipsum dolor.</Typography>
-              <Typography variant="h2">Lorem, ipsum.</Typography>
-              <Typography variant="h2">Lorem, ipsum dolor.</Typography>
+              <Typography variant="h2">Terpercaya & Cepat</Typography>
+              <Typography variant="subtitle2">
+                Solusi terbaik untuk kebutuhan Anda. Kecepatan dalam setiap langkah dengan kepercayaan sebagai pondasi. Hubungi kami sekarang dan rasakan hasil yang cepat, efisien, dan terpercaya.
+              </Typography>
               <Stack direction="row" justifyContent={{ xs: 'center', md: 'left' }} spacing={2} mt={5}>
                 <Link
                   href="https://play.google.com/store/apps/details?id=com.gojek.app&hl=id"
@@ -63,9 +80,6 @@ export default function Home() {
                   <img src="/static/badges/AppStore.svg" alt="Download di Google Play" width={150} />
                 </Link> */}
               </Stack>
-              <Typography variant="body2" mt={5}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum laudantium possimus, totam ipsum quisquam suscipit.
-              </Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
               <img
@@ -77,73 +91,147 @@ export default function Home() {
           </Grid>
         </Container>
       </Stack>
+
+      {/* Promo */}
       <Container sx={{ pt: 12 }} id="feature">
         <Typography variant="h3" align="center" gutterBottom>
           Promo Terbaru
         </Typography>
-        <Typography color="text.secondary" align="center">
-          Berikut beberapa promo yang sedang berlangsung :
-        </Typography>
         <Grid container spacing={3} mt={0}>
-          {promoBanner?.map((val, i) => {
+          <Grid item md={12} xs={12}>
+            <Carousel>
+            {promoBanner?.map((val, i) => {
             return (
-              <Grid item xs={12} md={4} key={val.id}>
                 <CustomCard
+                  key={val.id}
                   src={val.image_url}
                   title={val.name}
                   description={val.description}
-                  width={1000}
+                  width={600}
                   type="not_custom"
+                />
+            )
+          })}
+            </Carousel>
+
+          </Grid>
+          
+        </Grid>
+      </Container>
+
+      {/* Product hightlight */}
+      <Container sx={{ pt: 12 }} id="feature">
+        <Typography variant="h3" align="center" gutterBottom>
+          Highlight Produk
+        </Typography>
+        <Grid container spacing={3} mt={0}>
+            {hightlight?.map((val, i) => {
+            return (
+              <Grid item md={3} xs={12} key={val.id}>
+                <CustomCard
+                  src={val.product.image}
+                  title={val.product.product_name}
+                  description={val.product.price}
+                  width={200}
+                  type="product"
                 />
               </Grid>
             )
           })}
         </Grid>
       </Container>
-      <Container sx={{ pt: 12 }} id="about">
+
+      {/* About */}
+      <Container sx={{ pt: 12 }} >
         <Grid container alignItems="center" spacing={3} mb={3}>
           <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
             <Typography variant="h3" gutterBottom>
-              Lorem, ipsum dolor.
+              Tentang Kami
             </Typography>
-            <Typography color="text.secondary">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam delectus ipsam, minima iusto suscipit repellat cum nulla magni possimus quo odio? Fugit voluptatum, ex quae in temporibus corrupti quam quaerat repellendus ipsum, id eveniet quisquam sint blanditiis ipsa officia quasi est qui voluptatem? Eveniet sit libero impedit dicta corporis. Voluptates?
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
-            <img src="/static/illustrations/select.svg" alt="Order" width="100%" />
-          </Grid>
-        </Grid>
-        <Grid container alignItems="center" spacing={3} mb={3}>
-          <Grid item xs={12} sm={8} md={6}>
-            <img src="/static/illustrations/wallet.svg" alt="Order" width="100%" />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Typography variant="h3" gutterBottom>
-              Lorem, ipsum dolor.
-            </Typography>
-            <Typography color="text.secondary">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam dolores assumenda at quisquam repellat repellendus quas alias dolorum ex, culpa ipsam in iusto. Commodi quas odio nobis architecto facilis dolorum, in quaerat dignissimos libero fugit reiciendis, atque, doloremque ratione! Omnis at ea, impedit debitis qui ad dolore aspernatur ipsa porro.
-            </Typography>
-          </Grid>
-        </Grid>
-        <Grid container alignItems="center" spacing={3} mb={3}>
-          <Grid item xs={12} md={6} order={{ xs: 2, md: 1 }}>
-            <Typography variant="h3" gutterBottom>
-              Lorem ipsum dolor sit amet.
-            </Typography>
-            <Typography color="text.secondary">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic sunt illo ducimus! Officiis maiores dolor porro aliquid assumenda similique consectetur repudiandae, qui velit? Voluptatum explicabo ex hic qui consequatur dicta a sed? Veniam a quis dignissimos? A laborum illum ullam fugit facilis, rerum numquam aliquid dolor veritatis soluta, maxime ex.
+            <Typography sx={{ color: '#a8afad' }}>
+            Klinik café 24 adalah perusahaan retailer kebutuhan café dan resto berupa minuman dan kopi yang berdiri sejak 2016. Memiliki konsep penjualan secara online dan sudah memiliki  beberapa lokasi untuk pick up barang yang terdekat dengan lokasi konsumen guna memenuhi kebutuhan  dengan cepat dalam pengiriman secara instan.
+Sesuai visi dan misi perusahaan agar konsumen mendapatkan produk dengan cepat dan aman serta harga yang sesuai.
             </Typography>
           </Grid>
           <Grid item xs={12} sm={8} md={6} order={{ xs: 1, md: 2 }}>
-            <img src="/static/illustrations/chat.svg" alt="Order" width="100%" />
+            <img src="/static/illustrations/about-us.svg" alt="Order" width="100%" />
+          </Grid>
+        </Grid>
+      </Container>
+
+      {/* Keunggulan */}
+      <Container sx={{ pt: 12 }} id="feature">
+        <Typography variant="h3" align="center" gutterBottom>
+          Keunggulan
+        </Typography>
+        <Grid container spacing={3} mt={0}>
+          <Grid item md={4} xs={12}>
+            <Stack sx={{ textAlign: 'center' }}>
+              <Box 
+                component='img'
+                sx={{ 
+                  width: { xs: 300, md: 400 },
+                  aspectRatio: 3/2, 
+                  objectFit: 'contain'
+                }}
+                src={"/static/illustrations/delivery2.svg"} 
+                alt="Illustration"
+              />
+              <Typography variant='h4'>
+                Pengiriman Fleksibel
+              </Typography>
+              <Typography color="text.secondary">
+                Menyediakan beberapa lokasi pengiriman sesuai dengan lokasi yang  konsumen inginkan
+              </Typography>
+            </Stack>
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <Stack sx={{ textAlign: 'center' }}>
+              <Box 
+                component='img'
+                sx={{ 
+                  width: { xs: 300, md: 400 },
+                  aspectRatio: 3/2, 
+                  objectFit: 'contain'
+                }}
+                src={"/static/illustrations/payment.svg"} 
+                alt="Illustration"
+              />
+              <Typography variant='h4'>
+                MULTI PAYMENT
+              </Typography>
+              <Typography color="text.secondary">
+               Menyediakan berbagai pembayaran sesuai dengan kebutuhan konsumen
+              </Typography>
+            </Stack>
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <Stack sx={{ textAlign: 'center' }}>
+              <Box 
+                component='img'
+                sx={{ 
+                  width: { xs: 300, md: 400 },
+                  aspectRatio: 3/2, 
+                  objectFit: 'contain'
+                }}
+                src={"/static/illustrations/24hours.svg"} 
+                alt="Illustration"
+              />
+              <Typography variant='h4'>
+                LAYANAN 24 JAM
+              </Typography>
+              <Typography color="text.secondary">
+                Dapat diakses 24 jam secara online untuk pembelian.
+              </Typography>
+            </Stack>
           </Grid>
         </Grid>
       </Container>
       {/* <Container sx={{ pt: 12 }} id="faq">
         <CustomAccordion />
       </Container> */}
+
+      {/* Download */}
       <Container sx={{ pt: 12 }} id="download">
         <Card
           sx={{
@@ -185,6 +273,7 @@ export default function Home() {
           </CardContent>
         </Card>
       </Container>
+
       <Footer />
     </Page>
   );
