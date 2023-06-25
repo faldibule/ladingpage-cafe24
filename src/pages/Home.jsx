@@ -50,7 +50,7 @@ export default function Home() {
     return <CircularProgress />
   }
   return (
-    <Page title="Cafe24">
+    <Page title="Landing Page">
       <Navbar />
       <Stack
         id="home"

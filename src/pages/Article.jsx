@@ -77,7 +77,7 @@ export default function Article() {
     return () => mounted = false
   }, [])
   return (
-    <Page title="Food Delivery .Within Building. Group Chat.">
+    <Page title="Article">
       <Navbar type="article" />
       <Container sx={{ py: 12 }} id="Article">
         <Breadcrumbs separator='>' aria-label="breadcrumb" sx={{ my: 2, fontSize: { xs: '0.7rem', md:  '0.9rem', } }}>
